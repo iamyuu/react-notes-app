@@ -1,8 +1,8 @@
 export default [
   {
     id: 1,
-    title: `reactjs.id meetup (online) #5`,
-    note: `Topik: CRUD di react dan unit testing, Waktu: Sabtu, 23 November 2019 pukul 19.30 - 21.30 WIB`
+    title: `CRUD`,
+    note: `CRUD merupakan singkatan dari Create Read Update Delete`
   },
   {
     id: 2,
