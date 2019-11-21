@@ -24,6 +24,12 @@ function App() {
     setFormItem({ title: "", note: "" });
   };
 
+  const handleDelete = id => {
+    const newItems = items.filter(item => item.id !== id);
+
+    setItems(newItems);
+  };
+
   return (
     <>
       <Form
@@ -37,7 +43,7 @@ function App() {
       <br />
 
       {items.length ? (
-        <Card items={items} />
+        <Card items={items} onDelete={handleDelete} />
       ) : (
         <p className="text-center">Tidak ada data</p>
       )}
