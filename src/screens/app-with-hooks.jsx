@@ -30,6 +30,16 @@ function App() {
     setFormItem(items[index]);
   };
 
+  const handleUpdate = () => {
+    const index = items.findIndex(item => item.id === formItem.id);
+    const updatedItems = [...items];
+    updatedItems[index] = formItem;
+
+    setMode("create");
+    setItems(updatedItems);
+    setFormItem({ title: "", note: "" });
+  };
+
   const handleDelete = id => {
     const newItems = items.filter(item => item.id !== id);
 
@@ -42,7 +52,7 @@ function App() {
         mode={mode}
         item={formItem}
         onCreate={handleCreate}
-        onUpdate={console.log}
+        onUpdate={handleUpdate}
         onInputChange={handleInputChange}
       />
 
