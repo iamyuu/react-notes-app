@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:300");
+
+*:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-weight: 300;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  background-color: #f0f4f6;
+}
+
+input,
+textarea {
+  width: 100%;
+  margin: 0 0 5px;
+  padding: 7px 0;
+  border: none;
+  border-bottom: 1px solid #3d5866;
+}
+
+textarea {
+  height: 75px;
+  resize: none;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  margin-left: 5px;
+  float: right;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  color: #3d5866;
+  background-color: #eff3f6;
+}
+
+.card {
+  display: inline-block;
+  background: white;
+  margin: 24px 10px 0;
+  padding: 16px;
+  position: relative;
+  border-radius: 5px;
+  transition: box-shadow 0.25s;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 10px, rgba(0, 0, 0, 0.09) 0px 1px 2px;
+}
+
+.card__title {
+  margin: 0 0 1em;
+}
+
+.card__action {
+  margin: 1em 0 0;
+}
+
+.text-center {
+  text-align: center;
+}
