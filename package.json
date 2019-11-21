@@ -1,7 +1,19 @@
 {
-  "name": "notes-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "react-notes-app",
+  "version": "1.0.0",
+  "description": "Notes app with react",
+  "keywords": [
+    "react",
+    "reactjs",
+    "react-hooks",
+    "notes-app"
+  ],
+  "author": "Muhammad Yusuf <akuyusuf27@gmail.com>",
+  "main": "src/index.jsx",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/iamyuu/react-notes-app"
+  },
   "dependencies": {
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
