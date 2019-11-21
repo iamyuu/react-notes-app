@@ -1,12 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import Card from "../components/card";
-import items from "./items";
+import Form from "../components/form";
+import initialState from "./items";
 
 function App() {
-  return items.length ? (
-    <Card items={items} />
-  ) : (
-    <p className="text-center">Tidak ada data</p>
+  const [items, setItems] = useState(initialState);
+  const [formItem, setFormItem] = useState({ title: "", note: "" });
+
+  const handleInputChange = (name, value) => {
+    setFormItem({ ...formItem, [name]: value });
+  };
+
+  const handleCreate = () => {
+    const { title, note } = formItem;
+
+    const newItems = {
+      id: items.length + 1,
+      title,
+      note
+    };
+
+    setItems([...items, newItems]);
+    setFormItem({ title: "", note: "" });
+  };
+
+  return (
+    <>
+      <Form
+        mode="create"
+        item={formItem}
+        onCreate={handleCreate}
+        onUpdate={console.log}
+        onInputChange={handleInputChange}
+      />
+
+      <br />
+
+      {items.length ? (
+        <Card items={items} />
+      ) : (
+        <p className="text-center">Tidak ada data</p>
+      )}
+    </>
   );
 }
 
