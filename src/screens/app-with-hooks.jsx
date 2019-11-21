@@ -4,6 +4,7 @@ import Form from "../components/form";
 import initialState from "./items";
 
 function App() {
+  const [mode, setMode] = useState("create");
   const [items, setItems] = useState(initialState);
   const [formItem, setFormItem] = useState({ title: "", note: "" });
 
@@ -24,6 +25,11 @@ function App() {
     setFormItem({ title: "", note: "" });
   };
 
+  const handleEdit = index => {
+    setMode("edit");
+    setFormItem(items[index]);
+  };
+
   const handleDelete = id => {
     const newItems = items.filter(item => item.id !== id);
 
@@ -33,7 +39,7 @@ function App() {
   return (
     <>
       <Form
-        mode="create"
+        mode={mode}
         item={formItem}
         onCreate={handleCreate}
         onUpdate={console.log}
@@ -43,7 +49,7 @@ function App() {
       <br />
 
       {items.length ? (
-        <Card items={items} onDelete={handleDelete} />
+        <Card items={items} onEdit={handleEdit} onDelete={handleDelete} />
       ) : (
         <p className="text-center">Tidak ada data</p>
       )}
