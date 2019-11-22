@@ -1,6 +1,6 @@
 import React from "react";
-import Card from "../components/card";
-import Form from "../components/form";
+import Card from "components/card";
+import Form from "components/form";
 import initialState from "./items";
 
 class App extends React.Component {

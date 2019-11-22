@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import Card from "../components/card";
-import Form from "../components/form";
+import Card from "components/card";
+import Form from "components/form";
 import initialState from "./items";
 
 function App() {
