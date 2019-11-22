@@ -94,15 +94,11 @@ class App extends React.Component {
 
         <br />
 
-        {items.length ? (
-          <Card
-            items={items}
-            onEdit={this.handleEdit}
-            onDelete={this.handleDelete}
-          />
-        ) : (
-          <p className="text-center">Tidak ada data</p>
-        )}
+        <Card
+          items={items}
+          onEdit={this.handleEdit}
+          onDelete={this.handleDelete}
+        />
       </>
     );
   }

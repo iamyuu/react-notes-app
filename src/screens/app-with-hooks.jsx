@@ -58,11 +58,7 @@ function App() {
 
       <br />
 
-      {items.length ? (
-        <Card items={items} onEdit={handleEdit} onDelete={handleDelete} />
-      ) : (
-        <p className="text-center">Tidak ada data</p>
-      )}
+      <Card items={items} onEdit={handleEdit} onDelete={handleDelete} />
     </>
   );
 }
