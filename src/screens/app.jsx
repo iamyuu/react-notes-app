@@ -1,5 +1,5 @@
 import React from "react";
-import Card from "components/card";
+import Notes from "components/notes";
 import Form from "components/form";
 import initialState from "./items";
 
@@ -94,7 +94,7 @@ class App extends React.Component {
 
         <br />
 
-        <Card
+        <Notes
           items={items}
           onEdit={this.handleEdit}
           onDelete={this.handleDelete}
