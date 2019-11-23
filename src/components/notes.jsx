@@ -1,7 +1,7 @@
 import React from "react";
 
 // Functional Component or Stateless component
-const Card = ({ items, onEdit, onDelete }) =>
+const Notes = ({ items, onEdit, onDelete }) =>
   items.length ? (
     items.map(({ id, title, note }, index) => (
       <div key={id} className="card">
@@ -16,11 +16,11 @@ const Card = ({ items, onEdit, onDelete }) =>
       </div>
     ))
   ) : (
-    <p className="text-center">Tidak ada data</p>
+    <p className="text-center">Tidak ada catatan</p>
   );
 
 // Class component or statefull component
-// class Card extends React.Component {
+// class Notes extends React.Component {
 //   render() {
 //     const { items, onEdit, onDelete } = this.props;
 
@@ -43,4 +43,4 @@ const Card = ({ items, onEdit, onDelete }) =>
 //   }
 // }
 
-export default Card;
+export default Notes;
