@@ -1,37 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Notes from "components/notes";
 import Form from "components/form";
 import initialState from "./items";
 
-class App extends React.Component {
-  constructor() {
-    super();
+function App() {
+  const [mode, setMode] = useState("create");
+  const [items, setItems] = useState(initialState);
+  const [formItem, setFormItem] = useState({ title: "", note: "" });
 
-    this.handleEdit = this.handleEdit.bind(this);
-    this.handleCreate = this.handleCreate.bind(this);
-    this.handleUpdate = this.handleUpdate.bind(this);
-    this.handleDelete = this.handleDelete.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
-  }
-
-  state = {
-    mode: "create",
-    items: initialState,
-    formItem: {
-      title: "",
-      note: ""
-    }
+  const handleInputChange = (name, value) => {
+    setFormItem({ ...formItem, [name]: value });
   };
 
-  handleInputChange(name, value) {
-    const { formItem } = this.state;
-    const newFormitem = { ...formItem, [name]: value };
-
-    this.setState({ formItem: newFormitem });
-  }
-
-  handleCreate() {
-    const { items, formItem } = this.state;
+  const handleCreate = () => {
     const { title, note } = formItem;
 
     const newItems = {
@@ -40,68 +21,46 @@ class App extends React.Component {
       note
     };
 
-    this.setState({
-      items: [...items, newItems],
-      formItem: { title: "", note: "" }
-    });
-  }
+    setItems([...items, newItems]);
+    setFormItem({ title: "", note: "" });
+  };
 
-  handleUpdate() {
-    const { items, formItem } = this.state;
+  const handleEdit = index => {
+    setMode("edit");
+    setFormItem(items[index]);
+  };
+
+  const handleUpdate = () => {
     const index = items.findIndex(item => item.id === formItem.id);
-
     const updatedItems = [...items];
     updatedItems[index] = formItem;
 
-    this.setState({
-      mode: "create",
-      items: updatedItems,
-      formItem: { title: "", note: "" }
-    });
-  }
+    setMode("create");
+    setItems(updatedItems);
+    setFormItem({ title: "", note: "" });
+  };
 
-  handleEdit(index) {
-    const { items } = this.state;
-
-    this.setState({
-      mode: "edit",
-      formItem: items[index]
-    });
-  }
-
-  handleDelete(id) {
-    const { items } = this.state;
+  const handleDelete = id => {
     const newItems = items.filter(item => item.id !== id);
 
-    this.setState({
-      items: newItems,
-      formItem: { title: "", note: "" }
-    });
-  }
+    setItems(newItems);
+  };
 
-  render() {
-    const { mode, items, formItem } = this.state;
+  return (
+    <>
+      <Form
+        mode={mode}
+        item={formItem}
+        onCreate={handleCreate}
+        onUpdate={handleUpdate}
+        onInputChange={handleInputChange}
+      />
 
-    return (
-      <>
-        <Form
-          mode={mode}
-          item={formItem}
-          onCreate={this.handleCreate}
-          onUpdate={this.handleUpdate}
-          onInputChange={this.handleInputChange}
-        />
+      <br />
 
-        <br />
-
-        <Notes
-          items={items}
-          onEdit={this.handleEdit}
-          onDelete={this.handleDelete}
-        />
-      </>
-    );
-  }
+      <Notes items={items} onEdit={handleEdit} onDelete={handleDelete} />
+    </>
+  );
 }
 
 export default App;
